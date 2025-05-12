@@ -51,11 +51,10 @@ So I built **ScholarTrack** — a simple, student-first chatbot that makes every
 ---
 ## Demo
 ![Screenshot 2025-05-12 at 2 23 25 PM](https://github.com/user-attachments/assets/6e7ce158-b751-4e33-9a73-3e6eca86b6c7)
-![Screenshot 2025-05-12 at 2 23 38 PM](https://github.com/user-attachments
-![Uploading Screenshot 2025-05-12 at 1.12.03 PM (2).png…]()
-/assets/e893e9a2-44c8-4c74-a225-17d1a8e5550e)
 
+![Screenshot 2025-05-12 at 2 23 38 PM](https://github.com/user-attachments/assets/7e981a21-68a2-4728-a23b-e7bda138cdb4)
 
+<img width="1440" alt="Screenshot 2025-05-12 at 1 12 03 PM (2)" src="https://github.com/user-attachments/assets/1423c9af-9027-46d2-8876-04c740a9756e" />
 
 ---
 ## Future Plans
