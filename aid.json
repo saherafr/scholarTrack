@@ -1,0 +1,76 @@
+{
+    "finance": {
+        "emergency_loan": {
+            "title": "💸 Emergency Loan Program",
+            "content": [
+                "Provides immediate funding support for temporary financial shortfalls due to delays in funding, unexpected expenses, or temporary inability to cover essential living expenses.",
+                "Loans are not issued to pay for any university tuition or fees.",
+                "Eligibility: Must be a current undergraduate or graduate student with satisfactory academic standing and demonstrate the ability to repay the loan within six months.",
+                "Application: Submit online through the Emergency Loan application portal.",
+                "Disbursement: Approved funds are sent via Interac e-transfer by the end of the next business day.",
+                "Repayment: Payments can be made online through various banks; failure to repay may result in a financial hold on your student account.",
+                "Contact: bursaries@ualberta.ca",
+                "More Info: https://www.ualberta.ca/registrar/scholarships-awards-financial-support/bursaries-emergency-funding/emergency-loan.html"
+            ]
+        },
+        "domestic_supplementary_bursary": {
+            "title": "🇨🇦 Domestic Supplementary Bursary",
+            "content": [
+                "Available to domestic undergraduate and graduate students demonstrating financial need for the current academic year.",
+                "Applicants must have exhausted all available funding resources and meet academic and enrollment requirements.",
+                "Application Period: October to June of each academic year.",
+                "Application: Completed online through the Application for Financial Support system.",
+                "Disbursement: Bursary offers are applied to outstanding tuition or fees; remaining funds are refunded via e-Transfer through PayMyTuition.",
+                "Acceptance: Offers must be accepted in Bear Tracks before the specified deadline.",
+                "Contact: bursaries@ualberta.ca",
+                "More Info: https://www.ualberta.ca/registrar/scholarships-awards-financial-support/bursaries-emergency-funding/domestic-supplementary-bursary.html"
+            ]
+        },
+        "international_supplementary_bursary": {
+            "title": "🌐 International Supplementary Bursary",
+            "content": [
+                "Provides financial assistance to international undergraduate and graduate students who demonstrate a financial shortfall for academic and basic living costs in the current academic year.",
+                "Eligibility: Must be an international student in the second year or higher, currently enrolled at the University of Alberta, and in satisfactory academic standing.",
+                "Application Period: October to June of each academic year. Specific deadlines are December 15 for Fall term only, April 15 for Winter term, and June 15 for Spring/Summer term.",
+                "Application: Submit online through the Application for Financial Support system. Ensure all required documentation is provided to avoid delays.",
+                "Required Documentation: Financial statements for August and September, proof of funding received or expected, explanation of financial situation, and any deviations from the original financial plan.",
+                "Assessment Criteria: Applications are evaluated based on completeness of documentation, demonstration of financial need, and adherence to a moderate standard of living.",
+                "Disbursement: Approved bursary funds are first applied to any outstanding tuition or fees, then any remaining funds are refunded via e-Transfer through PayMyTuition.",
+                "Reassessment: Requests must be submitted within 15 days after the final class of the term, accompanied by new financial information or documentation of extenuating circumstances.",
+                "Contact: bursaries@ualberta.ca",
+                "More Info: https://www.ualberta.ca/registrar/scholarships-awards-financial-support/bursaries-emergency-funding/international-supplementary-bursary.html"
+            ]
+        },
+        "gsa_emergency_bursary": {
+            "title": "🎓 GSA Emergency Bursary",
+            "content": [
+                "Available to graduate students who are current GSA members facing unanticipated emergencies.",
+                "Applicants must have exhausted all other available funding options before applying.",
+                "Maximum award amount is $4,000 CAD.",
+                "Applications are open year-round through the Application for Financial Support system, subject to available funding.",
+                "Approved funds are sent via Interac e-transfer within 1 to 2 business days after approval.",
+                "Contact: bursaries@ualberta.ca",
+                "More Info: https://www.ualberta.ca/registrar/scholarships-awards-financial-support/bursaries-emergency-funding/gsa-emergency-bursary.html"
+            ]
+        },
+        "indigenous_students_support_fund": {
+            "title": "🧡 Indigenous Students' Support Fund",
+            "content": [
+                "Available to First Nations, Métis, or Inuit students experiencing a short-term financial emergency.",
+                "Funding is usually based on an emergency that may result in a barrier to continuing studies.",
+                "Application: Submit through the Application for Financial Support system.",
+                "Contact: bursaries@ualberta.ca",
+                "More Info: https://www.ualberta.ca/registrar/scholarships-awards-financial-support/bursaries-emergency-funding/index.html"
+            ]
+        },
+        "advisor_tips": {
+            "title": "🧭 Advisor Tips",
+            "content": [
+                "Contact the Student Service Centre for assistance with applications and financial support inquiries.",
+                "Use Bear Tracks to accept bursary offers and manage your student account.",
+                "For accessibility support during the application process, email dosdean@ualberta.ca.",
+                "More Info: https://www.ualberta.ca/registrar/scholarships-awards-financial-support/bursaries-emergency-funding/index.html"
+            ]
+        }
+    }
+}

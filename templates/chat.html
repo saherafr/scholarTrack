@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ScholarTrack Chatbot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    .fade-in {
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-quote {
+      opacity: 0;
+      transition: opacity 0.6s ease-in-out;
+    }
+    .fade-quote.show {
+      opacity: 1;
+    }
+
+    .glass-box {
+      backdrop-filter: blur(20px);
+      background: rgba(15, 15, 15, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .glass-input {
+      backdrop-filter: blur(10px);
+      background: rgba(51, 51, 51, 0.5);
+      border: 1px solid rgba(129, 140, 248, 0.2);
+    }
+
+    .message-container {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+    }
+    .user-avatar {
+      background-color: #6366f1;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+    .bot-avatar {
+      background-image: url('/static/bot-icon.png');
+      background-size: cover;
+    }
+
+    #particles-js {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-black via-gray-900 to-[#1a1a1a] min-h-screen p-6 text-white flex flex-col md:flex-row items-center gap-10 relative">
+
+  <!-- Particle Background -->
+  <div id="particles-js"></div>
+
+  <!-- Left: Chat UI -->
+  <div class="glass-box w-full md:max-w-4xl rounded-2xl p-6 fade-in order-1 md:order-none">
+    <div class="flex items-center gap-3 mb-6">
+      <span id="section-icon" class="text-3xl"></span>
+      <h2 id="section-title" class="text-2xl font-bold text-white"></h2>
+    </div>
+
+    <div id="chat-box" class="flex flex-col space-y-4 max-h-[500px] overflow-y-auto border border-indigo-600 rounded-lg bg-black/30 p-4">
+      <div class="message-container self-start">
+        <div class="avatar bot-avatar"></div>
+        <div class="bot-msg bg-indigo-700/30 p-4 rounded-xl text-base max-w-[70%]">
+          Hi! I'm here to help. Ask me anything related to this section.
+        </div>
+      </div>
+    </div>
+
+    <form id="chat-form" class="flex mt-6 space-x-2">
+      <input
+        type="text"
+        id="user-input"
+        class="glass-input flex-1 px-4 py-4 rounded-l-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-400 text-base"
+        placeholder="Type your question..."
+        required
+      />
+      <button type="submit" class="bg-indigo-600 text-white px-6 py-4 rounded-r-xl text-base hover:bg-indigo-700 transition hover:scale-105">
+        Send
+      </button>
+    </form>
+  </div>
+
+  <!-- Right: Robot Image + Quote -->
+  <div class="hidden md:flex flex-col justify-center items-center w-1/2 relative z-10">
+    <img src="{{ url_for('static', filename='robot-hug.png') }}" alt="Support Bot" class="w-64 mb-6" />
+
+    <div class="text-center">
+      <h3 class="text-lg font-semibold text-indigo-300 mb-2">💡 Scholar Support</h3>
+      <p id="quote" class="fade-quote italic text-gray-200 text-sm leading-relaxed max-w-xs show">
+        "You're doing better than you think. Small steps still count."
+      </p>
+      <div id="quote-author" class="fade-quote mt-2 text-indigo-400 text-xs show">— ScholarTrack</div>
+    </div>
+  </div>
+
+  <!-- Chatbot Logic -->
+  <script>
+    const section = "{{ section }}";
+    const sectionMap = {
+      finance: { icon: "💰", title: "Financial Aid Assistant" },
+      foodbank: { icon: "🍎", title: "Campus Food Bank Assistant" },
+      career: { icon: "💼", title: "Career Centre Assistant" },
+      health: { icon: "🏥", title: "Health Services Assistant" },
+      wellness: { icon: "🧠", title: "Wellness Support Assistant" }
+    };
+
+    const { icon, title } = sectionMap[section] || { icon: "🎓", title: "ScholarTrack Assistant" };
+    document.getElementById("section-icon").textContent = icon;
+    document.getElementById("section-title").textContent = title;
+
+    const form = document.getElementById('chat-form');
+    const input = document.getElementById('user-input');
+    const box = document.getElementById('chat-box');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const msg = input.value.trim();
+      if (!msg) return;
+
+      const userWrap = document.createElement('div');
+      userWrap.className = 'message-container self-end justify-end';
+
+      const userAvatar = document.createElement('div');
+      userAvatar.className = 'avatar user-avatar';
+      userAvatar.textContent = 'U';
+
+      const userMsg = document.createElement('div');
+      userMsg.className = 'user-msg bg-indigo-500/30 p-4 rounded-xl text-base max-w-[70%] text-right fade-in';
+      userMsg.textContent = msg;
+
+      userWrap.appendChild(userMsg);
+      userWrap.appendChild(userAvatar);
+      box.appendChild(userWrap);
+      box.scrollTop = box.scrollHeight;
+      input.value = '';
+
+      const botWrap = document.createElement('div');
+      botWrap.className = 'message-container self-start';
+
+      const botAvatar = document.createElement('div');
+      botAvatar.className = 'avatar bot-avatar';
+
+      const botMsg = document.createElement('div');
+      botMsg.className = 'bot-msg bg-indigo-700/30 p-4 rounded-xl text-base max-w-[70%] fade-in';
+      botMsg.textContent = "✍️ ...";
+
+      botWrap.appendChild(botAvatar);
+      botWrap.appendChild(botMsg);
+      box.appendChild(botWrap);
+      box.scrollTop = box.scrollHeight;
+
+      const res = await fetch(`/chatbot/${section}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: msg })
+      });
+
+      const data = await res.json();
+      const reply = data.reply;
+
+      let i = 0;
+      botMsg.textContent = "";
+      function typeWriter() {
+        if (i < reply.length) {
+          botMsg.textContent += reply.charAt(i);
+          i++;
+          box.scrollTop = box.scrollHeight;
+          setTimeout(typeWriter, 15);
+        }
+      }
+      typeWriter();
+    });
+  </script>
+
+  <!-- Particles Background -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 60, density: { enable: true, value_area: 800 } },
+        color: { value: '#8888ff' },
+        shape: { type: 'circle' },
+        opacity: { value: 0.3 },
+        size: { value: 3 },
+        move: { enable: true, speed: 1 }
+      },
+      interactivity: {
+        events: {
+          onhover: { enable: true, mode: 'repulse' }
+        }
+      }
+    });
+  </script>
+
+  <!-- Quote Rotator with Animation -->
+  <script>
+    const quotes = [
+      ["You're doing better than you think. Small steps still count.", "ScholarTrack"],
+      ["It's okay to ask for help. Strength looks different for everyone.", "ScholarTrack"],
+      ["Rest is productive. Your health matters more than your GPA.", "ScholarTrack"],
+      ["You belong here — even on the hard days.", "ScholarTrack"],
+      ["Everything feels impossible until it's done. You’ve got this.", "ScholarTrack"]
+    ];
+
+    let quoteIndex = 0;
+    const quoteEl = document.getElementById("quote");
+    const authorEl = document.getElementById("quote-author");
+
+    setInterval(() => {
+      quoteEl.classList.remove("show");
+      authorEl.classList.remove("show");
+
+      setTimeout(() => {
+        quoteIndex = (quoteIndex + 1) % quotes.length;
+        quoteEl.textContent = `"${quotes[quoteIndex][0]}"`;
+        authorEl.textContent = `— ${quotes[quoteIndex][1]}`;
+
+        quoteEl.classList.add("show");
+        authorEl.classList.add("show");
+      }, 500);
+    }, 8000);
+  </script>
+</body>
+</html>
