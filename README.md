@@ -2,7 +2,7 @@
 
 **ScholarTrack** is a personalized AI-powered chatbot that helps students discover financial aid, bursaries, emergency funds, health and wellness resources, and more — all in one place.
 
-Built using **Flask**, **PostgreSQL**, and **Ollama (phi3)**, this tool turns scattered university resources into a smart, searchable assistant that gives you exactly what you need, instantly.
+Built using **Flask**, **PostgreSQL**, and **Ollama (phi3)**, this tool turns scattered university resources into a smart, searchable assistant that gives you exactly what you need, instantly. Currently the bot is using Ollama LLM which makes the reply slower. The project is work on progress and soon be shifted to better nodels like OpenAI or Google Gemini for faster experience. 
 
 ---
 
@@ -54,11 +54,11 @@ So I built **ScholarTrack** — a simple, student-first chatbot that makes every
 
 ![Screenshot 2025-05-12 at 2 23 38 PM](https://github.com/user-attachments/assets/7e981a21-68a2-4728-a23b-e7bda138cdb4)
 
-<img width="1440" alt="Screenshot 2025-05-12 at 1 12 03 PM (2)" src="https://github.com/user-attachments/assets/1423c9af-9027-46d2-8876-04c740a9756e" />
+<img width="1440" alt="Screenshot 2025-05-12 at 2 38 11 PM (2)" src="https://github.com/user-attachments/assets/245436e1-393e-4c9f-8400-eb9af616070f" />
+
 
 ---
 ## Future Plans
-
 - Add support for multiple universities  
 - Admin dashboard for real-time analytics  
 - User login and saved query history  
